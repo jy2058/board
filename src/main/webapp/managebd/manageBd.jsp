@@ -1,8 +1,10 @@
+<%@page import="kr.or.ddit.managebd.model.BoardVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,31 +36,31 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">게시판 관리</h1>
           
+          <c:set var="boardList" value="${boardList }" scope="request"/>
           
-			
-          		<form action="/userModifyForm" class="form-horizontal" role="form">
+          		<form action="/manageBd" class="form-horizontal" role="form" id="manageForm" method="post">
 					<div class="form-group">
 						<div class="col-sm-9">
 							<label for="userNm" class="col-sm-3 control-label">게시판 생성</label>
-							<input type="text" name="newBd_t" id="newBd_t" value="게시판 이름">
+							<input type="text" name="newBd_t" id="newBd_t" >
 							<select name="newBd_useS" id="newBd_useS">
-								<option>사용</option>
-								<option>미사용</option>
+								<option value="1">사용</option>
+								<option value="0">미사용</option>
 							</select>
-							<input type="button" value="생성">
+							<input type="submit" value="생성" id="createBtn">
 						</div>
 					</div>
 
-					<c:forEach begin="1" end="3" var="i">
+					<c:forEach items="${boardList }" end="${fn:length(boardList) }" var="boardList" varStatus="i">
 						<div class="form-group">
 							<div class="col-sm-9">
 								<label for="userNm" class="col-sm-3 control-label">게시판 이름</label>
-								<input type="text" name="newBd_t" id="newBd_t" value="${i }">
+								<input type="text" name="newBd_t" id="newBd_t" value="${boardList.boardName}">
 								<select name="newBd_useS" id="newBd_useS">
 									<option>사용</option>
 									<option>미사용</option>
 								</select>
-								<input type="button" value="수정">
+								<input type="button" value="수정" >
 							</div>
 						</div>
 					</c:forEach>
@@ -74,6 +76,19 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+  <script>
+ 	  $("document").ready(function(){
+		 $("#createBtn").on("click", function(){
+
+			$("#manageForm").submit(); 
+			 
+		 }); 
+	  });
+  
+   
+  
+  </script>
   </body>
 </html>
     

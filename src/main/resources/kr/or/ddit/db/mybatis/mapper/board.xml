@@ -6,8 +6,13 @@
 <mapper namespace="board">
 
   <insert id="insertBoard" parameterType="boardVo">
-  	insert into board
-	values(board_seq.nextval, 'y', '테스트');
+  	insert into board (boardnum, boardname, use)
+	values(board_seq.nextval, #{boardName}, #{use})
   </insert>
+  
+  <select id="getAllBoard" resultType="boardVo">
+  	select boardnum, boardname, use
+  	from board
+  </select>
 
 </mapper>
