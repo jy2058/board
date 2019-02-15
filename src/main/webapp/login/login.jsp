@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="/images/icons/favicon.ico">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -86,7 +86,7 @@
   <script src="<%=request.getContextPath() %>/js/js.cookie.js"></script>
 
 <script>
-	$(document).ready(function(){
+	 $(document).ready(function(){
 		if(Cookies.get("userId")){
 			$("#userId").val(Cookies.get("userId"));
 			$("#rememberme").prop("checked", true);
@@ -94,7 +94,7 @@
 		$("#signin").click(function(){
 			if($("#rememberme").prop("checked")){
 				Cookies.set("userId", $("#userId").val(), {expires : 30});
-				Cookies.set("rememberme", "y"), {expires : 30};
+				Cookies.set("rememberme", "y", {expires : 30});
 			}else{
 				Cookies.remove("userId");
 				Cookies.remove("rememberme");
@@ -102,7 +102,7 @@
 			$("form").submit();
 		});
 		
-	});
+	}); 
 	
 </script>
 
