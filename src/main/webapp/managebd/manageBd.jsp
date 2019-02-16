@@ -54,16 +54,18 @@
 						<div class="form-group">
 							<div class="col-sm-9">
 								<label for="boardNm" class="col-sm-3 control-label">게시판 이름</label>
-								<input type="text" name="Bd_t" id="Bd_t" value="${boardList.boardName}">
-								<select name="bd_use" id="bd_use">
-									<option>사용</option>
-									<option>미사용</option>
+								<input type="text" name="bd_t${boardList.boardNum }" value="${boardList.boardName}">
+								<select name="bd_use${boardList.boardNum }">
+									<c:set value="${boardList.use eq '0' ? 'selected' : ''}" var="sel"/>   
+									<option value="1" ${sel }>사용</option>
+									<option value="0" ${sel }>미사용</option>
 								</select>
-								<input type="button" value="수정" id="updBtn">
+								<input class="updBtn" type="button" value="수정" data-boardNum="${boardList.boardNum }">
 							</div>
 						</div>
 					</c:forEach>
-					
+					<input type="hidden" id="info" name="info">
+					<input type="hidden" id="boardNum" name="boardNum">
 				</form>
              
         </div>
@@ -84,12 +86,17 @@
 				 $("#newBd_t").focus();
 				 return;
 			 }
+			$("#info").val("insert");
 			$("#manageForm").submit(); 
 			 
 		 });
 		 
-		 $("#updBtn").on("click", function(){
+		 $(".updBtn").on("click", function(){
+			 var boardNum = $(this).attr("data-boardNum");
 			 
+			 $("#info").val("update");
+			 $("#boardNum").val(boardNum);
+			 $("#manageForm").submit();
 		 });
 	  });
   

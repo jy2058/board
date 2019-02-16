@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.DebugGraphics;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,17 +41,39 @@ public class ManageBdController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String boardName = request.getParameter("newBd_t");
-		String use = request.getParameter("newBd_use");
-
-		if(!boardName.equals("")){
-			BoardVo boardVo = new BoardVo();
+		String info = request.getParameter("info");
+		
+		BoardVo boardVo;
+		if(info.equals("insert")){
+			String boardName = request.getParameter("newBd_t");
+			String use = request.getParameter("newBd_use");
+	
+			if(!boardName.equals("")){
+				boardVo = new BoardVo();
+				boardVo.setBoardName(boardName);
+				boardVo.setUse(use);
+				
+				int cnt = boardService.insertBoard(boardVo);
+	
+				if(cnt > 0){
+					response.sendRedirect(request.getContextPath() + "/manageBd");
+					return;
+				}
+			}
+		}else if(info.equals("update")){
+			logger.debug("boardNum = " + request.getParameter("boardNum"));
+			String boardNum = request.getParameter("boardNum");
+			String boardName = request.getParameter("bd_t" + boardNum);
+			String use = request.getParameter("bd_use" + boardNum);
+			
+			boardVo = new BoardVo();
+			boardVo.setBoardNum(boardNum);
 			boardVo.setBoardName(boardName);
 			boardVo.setUse(use);
 			
-			int cnt = boardService.insertBoard(boardVo);
-
-			if(cnt > 0){
+			int updCnt = boardService.updBoard(boardVo);
+			
+			if(updCnt > 0){
 				response.sendRedirect(request.getContextPath() + "/manageBd");
 				return;
 			}
@@ -58,7 +81,6 @@ public class ManageBdController extends HttpServlet {
 		
 		doGet(request, response);
 		
-	
 	}
 
 }
