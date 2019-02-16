@@ -36,6 +36,8 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">게시판 관리</h1>
           
+          깃 잘 되나 테스트
+          
           <c:set var="boardList" value="${boardList }" scope="request"/>
           
           		<form action="/manageBd" class="form-horizontal" role="form" id="manageForm" method="post">
