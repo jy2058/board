@@ -14,5 +14,10 @@
   	select boardnum, boardname, use
   	from board
   </select>
+  
+  <update id="updBoard" parameterType="boardVo">
+  	update board set use = #{use}, boardname = #{boardName}
+	where boardnum = #{boardNum}
+  </update>
 
 </mapper>

@@ -41,23 +41,21 @@ public class ManageBdController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String boardName = request.getParameter("newBd_t");
-		String use = request.getParameter("newBd_useS");
+		String use = request.getParameter("newBd_use");
 
-		int cnt=0;
 		if(!boardName.equals("")){
 			BoardVo boardVo = new BoardVo();
 			boardVo.setBoardName(boardName);
 			boardVo.setUse(use);
 			
-			cnt = boardService.insertBoard(boardVo);
+			int cnt = boardService.insertBoard(boardVo);
+
+			if(cnt > 0){
+				response.sendRedirect(request.getContextPath() + "/manageBd");
+				return;
+			}
 		}
 		
-		if(cnt > 0){
-			//request.getRequestDispatcher("/managebd/manageBd.jsp").forward(request, response);
-		
-			//response.sendRedirect(request.getContextPath() + "/manageBd");
-			response.sendRedirect("/module/main.jsp");
-		}
 		doGet(request, response);
 		
 	

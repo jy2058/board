@@ -28,13 +28,14 @@
 </head>
 
 <body>
-
+	<%@include file="/module/header.jsp"%>
 	<%
-		RequestDispatcher rd = request
-				.getRequestDispatcher("/module/header.jsp");
-		rd.include(request, response);
+		IBoardService boardService = new BoardServiceImpl();
+		List<BoardVo> boardList = boardService.getAllBoard();
+		request.setAttribute("boardList", boardList);
 	%>
-
+	 
+		
 	<div class="container-fluid">
 	    <div class="row">
 			<%@include file="/module/left.jsp"%>

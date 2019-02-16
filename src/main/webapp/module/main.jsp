@@ -29,11 +29,7 @@
 
 <body>
 
-	<%
-		RequestDispatcher rd = request
-				.getRequestDispatcher("/module/header.jsp");
-		rd.include(request, response);
-	%>
+	<%@include file="/module/header.jsp"%>
 	
 	<%
 		IBoardService boardService = new BoardServiceImpl();
@@ -57,12 +53,6 @@
 					</div>
 				</div>
 		</div>
-		
-		<%-- <div class="row">
-			<% request.getRequestDispatcher("/module/left.jsp").include(request, response);%>
-		</div>
-		 --%>
-		
 	</div>
 	
 	

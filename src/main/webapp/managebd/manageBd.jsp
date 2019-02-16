@@ -40,9 +40,9 @@
           		<form action="/manageBd" class="form-horizontal" role="form" id="manageForm" method="post">
 					<div class="form-group">
 						<div class="col-sm-9">
-							<label for="userNm" class="col-sm-3 control-label">게시판 생성</label>
+							<label for="boardNm" class="col-sm-3 control-label">게시판 생성</label>
 							<input type="text" name="newBd_t" id="newBd_t" >
-							<select name="newBd_useS" id="newBd_useS">
+							<select name="newBd_use" id="newBd_use">
 								<option value="1">사용</option>
 								<option value="0">미사용</option>
 							</select>
@@ -53,13 +53,13 @@
 					<c:forEach items="${boardList }" end="${fn:length(boardList) }" var="boardList">
 						<div class="form-group">
 							<div class="col-sm-9">
-								<label for="userNm" class="col-sm-3 control-label">게시판 이름</label>
-								<input type="text" name="newBd_t" id="newBd_t" value="${boardList.boardName}">
-								<select name="newBd_useS" id="newBd_useS">
+								<label for="boardNm" class="col-sm-3 control-label">게시판 이름</label>
+								<input type="text" name="Bd_t" id="Bd_t" value="${boardList.boardName}">
+								<select name="bd_use" id="bd_use">
 									<option>사용</option>
 									<option>미사용</option>
 								</select>
-								<input type="button" value="수정" >
+								<input type="button" value="수정" id="updBtn">
 							</div>
 						</div>
 					</c:forEach>
@@ -86,7 +86,11 @@
 			 }
 			$("#manageForm").submit(); 
 			 
-		 }); 
+		 });
+		 
+		 $("#updBtn").on("click", function(){
+			 
+		 });
 	  });
   
    

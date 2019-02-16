@@ -57,4 +57,17 @@ public class BoardServiceImpl implements IBoardService{
 		return boardList;
 	}
 
+	@Override
+	public int updBoard(BoardVo boardVo) {
+		SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		int updCnt = boardDao.updBoard(sqlSession, boardVo);
+		
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return updCnt;
+	}
+
 }

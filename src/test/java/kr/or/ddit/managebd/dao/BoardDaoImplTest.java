@@ -48,6 +48,20 @@ public class BoardDaoImplTest {
 		/***Then***/
 //		assertEquals(3, boardList.size());
 		assertNotNull(boardList.get(0).getBoardName());
+	}
+	@Test
+	public void testUpdBoard(){
+		/***Given***/
+		BoardVo boardVo = new BoardVo();
+		boardVo.setBoardName("테스트");
+		boardVo.setBoardNum("8");
+		boardVo.setUse("0");
+		
+		/***When***/
+		int cnt = boardDao.updBoard(sqlSession, boardVo);
+
+		/***Then***/
+		assertEquals(1, cnt);
 
 		
 	}

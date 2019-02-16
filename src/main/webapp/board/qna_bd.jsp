@@ -34,6 +34,11 @@
 				.getRequestDispatcher("/module/header.jsp");
 		rd.include(request, response);
 	%>
+	<%
+		IBoardService boardService = new BoardServiceImpl();
+		List<BoardVo> boardList = boardService.getAllBoard();
+		request.setAttribute("boardList", boardList);
+	%>
 
 	<div class="container-fluid">
 	    <div class="row">

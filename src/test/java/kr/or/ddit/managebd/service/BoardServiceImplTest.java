@@ -43,6 +43,30 @@ public class BoardServiceImplTest {
 
 		
 	}
+	
+	/**
+	* Method : testUpdBoard
+	* 작성자 : kjy
+	* 변경이력 :
+	* Method 설명 : 게시판 수정
+	*/
+	@Test
+	public void testUpdBoard(){
+		/***Given***/
+		BoardVo boardVo = new BoardVo();
+		boardVo.setBoardName("테스트");
+		boardVo.setBoardNum("8");
+		boardVo.setUse("0");
+		
+		/***When***/
+		int cnt = boardService.updBoard(boardVo);
+
+		/***Then***/
+		assertEquals(1, cnt);
+
+		
+	}
+
 
 
 }
