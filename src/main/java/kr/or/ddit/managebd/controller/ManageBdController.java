@@ -42,15 +42,21 @@ public class ManageBdController extends HttpServlet {
 		
 		String boardName = request.getParameter("newBd_t");
 		String use = request.getParameter("newBd_useS");
+
+		int cnt=0;
+		if(!boardName.equals("")){
+			BoardVo boardVo = new BoardVo();
+			boardVo.setBoardName(boardName);
+			boardVo.setUse(use);
+			
+			cnt = boardService.insertBoard(boardVo);
+		}
 		
-		BoardVo boardVo = new BoardVo();
-		boardVo.setBoardName(boardName);
-		boardVo.setUse(use);
-		
-		int cnt = boardService.insertBoard(boardVo);
 		if(cnt > 0){
 			//request.getRequestDispatcher("/managebd/manageBd.jsp").forward(request, response);
-			response.sendRedirect(request.getContextPath() + "/module/main.jsp");
+		
+			//response.sendRedirect(request.getContextPath() + "/manageBd");
+			response.sendRedirect("/module/main.jsp");
 		}
 		doGet(request, response);
 		

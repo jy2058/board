@@ -34,38 +34,23 @@
 				.getRequestDispatcher("/module/header.jsp");
 		rd.include(request, response);
 	%>
-	
-	<%
-		IBoardService boardService = new BoardServiceImpl();
-		List<BoardVo> boardList = boardService.getAllBoard();
-		request.setAttribute("boardList", boardList);
-	%>
-	
-	
 
 	<div class="container-fluid">
 	    <div class="row">
 			<%@include file="/module/left.jsp"%>
 			
-			
 			 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          		<h1 class="page-header">메인 페이지</h1>
+          		<h1 class="page-header">자유 게시판</h1>
           			<div class="form-group">
 						<div class="col-sm-9">
-							main
+						
+						
 						</div>
 					</div>
 				</div>
 		</div>
 		
-		<%-- <div class="row">
-			<% request.getRequestDispatcher("/module/left.jsp").include(request, response);%>
-		</div>
-		 --%>
-		
 	</div>
-	
-	
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->

@@ -35,9 +35,6 @@
        
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">게시판 관리</h1>
-          
-          깃 잘 되나 테스트
-          
           <c:set var="boardList" value="${boardList }" scope="request"/>
           
           		<form action="/manageBd" class="form-horizontal" role="form" id="manageForm" method="post">
@@ -53,7 +50,7 @@
 						</div>
 					</div>
 
-					<c:forEach items="${boardList }" end="${fn:length(boardList) }" var="boardList" varStatus="i">
+					<c:forEach items="${boardList }" end="${fn:length(boardList) }" var="boardList">
 						<div class="form-group">
 							<div class="col-sm-9">
 								<label for="userNm" class="col-sm-3 control-label">게시판 이름</label>
@@ -82,7 +79,11 @@
   <script>
  	  $("document").ready(function(){
 		 $("#createBtn").on("click", function(){
-
+			 if($("#newBd_t").val() == ''){
+				 alert("게시판 이름을 입력하세요.");
+				 $("#newBd_t").focus();
+				 return;
+			 }
 			$("#manageForm").submit(); 
 			 
 		 }); 

@@ -38,12 +38,12 @@
 				<form action="/login" class="login100-form validate-form p-b-33 p-t-5" method="post">
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="userId" id="userId" placeholder="UserId">
+						<input class="input100" type="text" name="userId" id="userId" placeholder="UserId" value="cony">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" id="pass" placeholder="Password">
+						<input class="input100" type="password" name="pass" id="pass" placeholder="Password" value="cony1234">
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					</div>
 

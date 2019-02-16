@@ -22,7 +22,7 @@ public class BoardServiceImplTest {
 
 	@Test
 	public void testInsertBoard() {
-		boardVo.setUse("y");
+		boardVo.setUse("1");
 		boardVo.setBoardName("테스트");
 		
 		int cnt = boardService.insertBoard(boardVo);
