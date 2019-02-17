@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="post">
+  
+  <insert id="insertPost" parameterType="postVo">
+  	insert into posts
+	(postnum, userid, contents, title, postdate, parentpostnum, toppostnum, boardnum, boardinfo)
+	values (POSTNUM_SEQ.nextval, #{user_id}, #{contents}, #{title}, sysdate, #{parent_postNum}, #{rootNum}, #{boardNum}, #{board_info})
+  </insert>
+  
+  <select id="getAllPost" parameterType="String" resultType="postVo">
+  	select postnum, LPAD(' ', 2*level-1) || title, postdate, posts.boardnum, userid, contents, parentpostnum, toppostnum
+	from posts, board
+	where board.boardnum = posts.boardnum and posts.boardnum = #{boardNum}
+	start with parentpostnum is null
+	    connect by prior postnum = parentpostnum
+	    order siblings by toppostnum desc, postnum
+  </select>
+
+</mapper>

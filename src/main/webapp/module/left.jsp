@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@page import="kr.or.ddit.managebd.model.BoardVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,6 +11,7 @@
 <ul class="nav nav-sidebar">
 	<li><a href="<%=request.getContextPath()%>/manageBd">게시판 관리</a></li>
 </ul>
+
 <ul id="name" class="nav nav-sidebar">
 
 <c:forEach items="${boardList }" end="${fn:length(boardList) }" var="list">
