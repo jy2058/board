@@ -2,9 +2,11 @@ package kr.or.ddit.board.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-
+import kr.or.ddit.board.model.AttVo;
+import kr.or.ddit.board.model.ComVo;
 import kr.or.ddit.board.model.PostVo;
+
+import org.apache.ibatis.session.SqlSession;
 
 public interface IPostDao {
 	
@@ -28,5 +30,38 @@ public interface IPostDao {
 	* @return
 	* Method 설명 : 게시판별 리스트 출력
 	*/
-	List<PostVo> getAllPost(SqlSession sqlSession, String boardNum);
+	List<Object> getAllPost(SqlSession sqlSession, String boardNum);
+	
+	/**
+	* Method : getDetailPost
+	* 작성자 : PC08
+	* 변경이력 :
+	* @param sqlSession
+	* @param postNum
+	* @return
+	* Method 설명 : 선택한 게시글 가져오기
+	*/
+	List<Object> getDetailPost(SqlSession sqlSession, String postNum);
+	
+	/**
+	* Method : getAllCom
+	* 작성자 : PC08
+	* 변경이력 :
+	* @param sqlSession
+	* @param postNum
+	* @return
+	* Method 설명 : 모든 댓글 가져오기
+	*/
+	List<Object> getAllCom(SqlSession sqlSession, String postNum);
+	
+	/**
+	* Method : getAllAtt
+	* 작성자 : PC08
+	* 변경이력 :
+	* @param sqlSession
+	* @param postNum
+	* @return
+	* Method 설명 : 모든 첨부파일 가져오기
+	*/
+	List<Object> getAllAtt(SqlSession sqlSession, String postNum);
 }

@@ -18,9 +18,9 @@ public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	IPostService postService;
 	
-	List<PostVo> postList;
+	List<Object> postList;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String boardName = request.getParameter("boardName");
+		//String boardName = request.getParameter("boardName");
 		String boardNum = request.getParameter("boardNum");
 
 		System.out.println(boardNum);

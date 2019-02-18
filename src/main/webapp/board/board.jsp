@@ -43,7 +43,7 @@
 			<%@include file="/module/left.jsp"%>
 			
 			 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          		<h1 class="page-header">자유 게시판</h1>
+          		<h1 class="page-header">${param.boardName }</h1>
           			<div class="form-group">
 						<div class="col-sm-9">
 							<c:set var="postList" value="${postList}" scope="request"/>
@@ -60,17 +60,16 @@
 				              </thead>
 				              <tbody>
 				              <c:forEach items="${postList}" var="postList">
-				              	<tr class="postTr">
+				              	<tr class="postTr" data-postNum="${postList.postNum }">
 					              	<td>${postList.postNum }</td>
 					              	<td>${postList.title }</td>
 					              	<td>${postList.user_id }</td>
 					              	<td><fmt:formatDate value="${postList.post_date }" pattern="yyyy-MM-dd"/></td>
 				              	</tr>
 				              </c:forEach>
-				              
-				           
 				              </tbody>
-				            </table>	
+				            </table>
+				            <button id="newBtn" type="button" class="btn btn-default">새글 등록</button>	
 						</div>
 						</div>
 					</div>
@@ -86,5 +85,27 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		
+	<script>
+		$(document).ready(function(){
+			$(".postTr").on("click", function(){
+				var postNum = $(this).attr("data-postNum");
+				$("#postNum").val(postNum);
+				
+				$("#detail_frm").submit();
+			});
+			
+			$("#newBtn").on("click", function(){
+				$("#newPost").val("insert");
+				$("#post_frm").submit();
+			});
+		});
+	</script>
+	<form action="${pageContext.servletContext.contextPath}/postDetail" id="detail_frm" method="get">
+		<input type="hidden" name="postNum" id="postNum"/>
+	</form>
+	<form action="${pageContext.servletContext.contextPath}/post" id="post_frm" method="get">
+		<input type="hidden" name="newPost" id="newPost"/>
+	</form>
 </body>
 </html>

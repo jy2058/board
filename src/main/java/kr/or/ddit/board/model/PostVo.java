@@ -13,6 +13,7 @@ public class PostVo {
 	private String boardNum     ;	//게시판 분류 번호
 	private String board_info    ; 	//삭제여부
 	
+	
 	public String getPostNum() {
 		return postNum;
 	}

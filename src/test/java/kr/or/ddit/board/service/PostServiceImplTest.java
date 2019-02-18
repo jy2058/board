@@ -42,11 +42,16 @@ public class PostServiceImplTest {
 	
 	@Test
 	public void testGetAllPost(){
-		List<PostVo> allPost = postService.getAllPost("1");
-		System.out.println(allPost.get(0).getContents());
+		List<Object> allPost = postService.getAllPost("1");
+		System.out.println(((PostVo) allPost.get(0)).getContents());
 		System.out.println("sdfdsf");
 		
 		assertNotNull(allPost);
+	}
+	@Test
+	public void testGetDetailPost(){
+		postVo = postService.getDetailPost("3");
+		assertNotNull(postVo);
 	}
 
 }

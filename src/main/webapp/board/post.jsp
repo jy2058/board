@@ -4,6 +4,8 @@
 <%@page import="kr.or.ddit.managebd.service.IBoardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,29 +30,26 @@
 </head>
 
 <body>
-
-	<%
-		RequestDispatcher rd = request
-				.getRequestDispatcher("/module/header.jsp");
-		rd.include(request, response);
-	%>
+	<%@include file="/module/header.jsp"%>
 	<%
 		IBoardService boardService = new BoardServiceImpl();
 		List<BoardVo> boardList = boardService.getAllBoard();
 		request.setAttribute("boardList", boardList);
 	%>
-
+		
+		
 	<div class="container-fluid">
 	    <div class="row">
 			<%@include file="/module/left.jsp"%>
-			<%-- <jsp:include page="/module/left.jsp" flush="true"></jsp:include> --%>
 			
 			 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          		<h1 class="page-header">Q&A 게시판</h1>
+          		<h1 class="page-header">${param.boardName }</h1>
           			<div class="form-group">
 						<div class="col-sm-9">
-						
-						
+							<c:set var="postList" value="${postList}" scope="request"/>
+				             <div class="table-responsive">
+				             	post.jsp
+				             </div>
 						</div>
 					</div>
 				</div>
@@ -65,5 +64,7 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		
+		
 </body>
 </html>

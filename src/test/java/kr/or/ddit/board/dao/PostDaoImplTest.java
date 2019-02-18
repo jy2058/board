@@ -63,11 +63,17 @@ public class PostDaoImplTest {
 	*/
 	@Test
 	public void testGetAllPost(){
-		List<PostVo> allPost = postDao.getAllPost(sqlSession, "1");
-		System.out.println(allPost.get(0).getContents());
+		List<Object> allPost = postDao.getAllPost(sqlSession, "1");
+		System.out.println(((PostVo) allPost.get(0)).getContents());
 		System.out.println("sdfdsf");
 		logger.debug("sdfsdf");
 		assertNotNull(allPost);
+	}
+	
+	@Test
+	public void testGetDetailPost(){
+		PostVo postVo = postDao.getDetailPost(sqlSession, "3");
+		assertNotNull(postVo);
 	}
 
 }

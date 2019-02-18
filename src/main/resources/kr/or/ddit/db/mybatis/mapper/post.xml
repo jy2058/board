@@ -21,5 +21,30 @@
 	    order siblings by toppostnum desc, postnum
 
   </select>
-
+  
+<!--   <select id="getDetailPost" parameterType="String" resultType="postVo">
+    select title, contents, attfilenum, posts.postnum
+	from posts, attachedfile
+	where posts.postnum = attachedfile.postnum
+	    and attfilenum = #{attfilenum}
+	</select> -->
+	
+	<select id="getDetailPost" parameterType="String" resultType="postVo">
+		select title, contents, postnum
+		from posts
+		where postnum = #{postNum}
+	</select>
+	
+	<select id="getAllCom" parameterType="String" resultType="comVo">
+		select com_num, com_date, userid, postnum, com_delinfo, com_contents
+		from comments
+		where postnum = #{postNum}
+	</select>
+	
+	<select id="getAllAtt" parameterType="String" resultType="attVo">
+		select attfile_num, postnum, attfile_name, path
+		from attachedfile
+		where postnum = #{postNum}
+	</select>
+	
 </mapper>

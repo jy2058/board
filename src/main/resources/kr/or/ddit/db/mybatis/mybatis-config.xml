@@ -10,6 +10,8 @@
 		<typeAlias alias="pageVo" type="kr.or.ddit.util.model.PageVo"/>
 		<typeAlias alias="boardVo" type="kr.or.ddit.managebd.model.BoardVo"/>
 		<typeAlias alias="postVo" type="kr.or.ddit.board.model.PostVo"/>
+		<typeAlias alias="comVo" type="kr.or.ddit.board.model.ComVo"/>
+		<typeAlias alias="attVo" type="kr.or.ddit.board.model.AttVo"/>
 	</typeAliases>
 	
   <environments default="development">
