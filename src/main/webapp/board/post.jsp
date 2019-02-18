@@ -38,7 +38,7 @@
 	%>
 		
 		
-	<div class="container-fluid">
+<div class="container-fluid">
 	    <div class="row">
 			<%@include file="/module/left.jsp"%>
 			
@@ -46,10 +46,8 @@
           		<h1 class="page-header">${param.boardName }</h1>
           			<div class="form-group">
 						<div class="col-sm-9">
-							<c:set var="postList" value="${postList}" scope="request"/>
-				             <div class="table-responsive">
-				             	post.jsp
-				             </div>
+             
+				            
 						</div>
 					</div>
 				</div>
