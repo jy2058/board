@@ -16,7 +16,7 @@
 
 <c:forEach items="${boardList }" end="${fn:length(boardList) }" var="list">
 	<c:if test="${list.use == '1'}">
-		<li><a href="<%=request.getContextPath()%>/board?boardName=${list.boardName }">${list.boardName }</a></li>
+		<li><a href="<%=request.getContextPath()%>/board?boardName=${list.boardName }&boardNum=${list.boardNum}">${list.boardName }</a></li>
 	</c:if>
 </c:forEach>
 </ul>

@@ -1,6 +1,9 @@
 package kr.or.ddit.board.service;
 
 import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+
 import kr.or.ddit.board.model.PostVo;
 
 import org.junit.Before;
@@ -35,6 +38,15 @@ public class PostServiceImplTest {
 		/***Then***/
 		assertNotNull(cnt);
 		
+	}
+	
+	@Test
+	public void testGetAllPost(){
+		List<PostVo> allPost = postService.getAllPost("1");
+		System.out.println(allPost.get(0).getContents());
+		System.out.println("sdfdsf");
+		
+		assertNotNull(allPost);
 	}
 
 }

@@ -12,12 +12,14 @@
   </insert>
   
   <select id="getAllPost" parameterType="String" resultType="postVo">
-  	select postnum, LPAD(' ', 2*level-1) || title, postdate, posts.boardnum, userid, contents, parentpostnum, toppostnum
+   
+  	select postnum, LPAD('　└', 2*level-1) || title as title, postdate, posts.boardnum, userid as user_Id, contents, postdate as post_date, parentpostnum as parent_postNum, toppostnum as rootNum, boardinfo as board_info
 	from posts, board
 	where board.boardnum = posts.boardnum and posts.boardnum = #{boardNum}
 	start with parentpostnum is null
 	    connect by prior postnum = parentpostnum
 	    order siblings by toppostnum desc, postnum
+
   </select>
 
 </mapper>

@@ -4,6 +4,8 @@
 <%@page import="kr.or.ddit.managebd.service.IBoardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +36,7 @@
 		List<BoardVo> boardList = boardService.getAllBoard();
 		request.setAttribute("boardList", boardList);
 	%>
-	 
+		
 		
 	<div class="container-fluid">
 	    <div class="row">
@@ -44,8 +46,32 @@
           		<h1 class="page-header">자유 게시판</h1>
           			<div class="form-group">
 						<div class="col-sm-9">
-						
-						
+							<c:set var="postList" value="${postList}" scope="request"/>
+             
+				             <div class="table-responsive">
+				            <table class="table table-striped">
+				              <thead>
+				                <tr>
+				                  <th>게시글 번호</th>
+				                  <th>제목</th>
+				                  <th>작성자 아이디</th>
+				                  <th>작성일시</th>
+				                </tr>
+				              </thead>
+				              <tbody>
+				              <c:forEach items="${postList}" var="postList">
+				              	<tr class="postTr">
+					              	<td>${postList.postNum }</td>
+					              	<td>${postList.title }</td>
+					              	<td>${postList.user_id }</td>
+					              	<td><fmt:formatDate value="${postList.post_date }" pattern="yyyy-MM-dd"/></td>
+				              	</tr>
+				              </c:forEach>
+				              
+				           
+				              </tbody>
+				            </table>	
+						</div>
 						</div>
 					</div>
 				</div>

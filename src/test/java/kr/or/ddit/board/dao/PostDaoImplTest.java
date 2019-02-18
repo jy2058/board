@@ -1,6 +1,9 @@
 package kr.or.ddit.board.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+
 import kr.or.ddit.board.model.PostVo;
 import kr.or.ddit.db.mybatis.MybatisSqlSessionFactory;
 
@@ -50,6 +53,21 @@ public class PostDaoImplTest {
 		assertNotNull(cnt);
 
 		
+	}
+	
+	/**
+	* Method : testGetAllPost
+	* 작성자 : PC08
+	* 변경이력 :
+	* Method 설명 : 게시판별 게시글 가져오기 
+	*/
+	@Test
+	public void testGetAllPost(){
+		List<PostVo> allPost = postDao.getAllPost(sqlSession, "1");
+		System.out.println(allPost.get(0).getContents());
+		System.out.println("sdfdsf");
+		logger.debug("sdfsdf");
+		assertNotNull(allPost);
 	}
 
 }
