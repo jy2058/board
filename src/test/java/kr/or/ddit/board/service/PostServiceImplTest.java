@@ -50,7 +50,7 @@ public class PostServiceImplTest {
 	}
 	@Test
 	public void testGetDetailPost(){
-		postVo = postService.getDetailPost("3");
+		postVo = (PostVo) postService.getDetailPost("3");
 		assertNotNull(postVo);
 	}
 

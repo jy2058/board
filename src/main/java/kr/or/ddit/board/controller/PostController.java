@@ -23,9 +23,9 @@ public class PostController extends HttpServlet {
 	private Logger logger = LoggerFactory.getLogger(PostController.class);
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getSession().getAttribute("userVo") == null){
+/*		if(request.getSession().getAttribute("userVo") == null){
 			response.sendRedirect(request.getContextPath() + "/login");
-		}
+		}*/
 		request.getRequestDispatcher("/board/post.jsp").forward(request, response);
 	}
 
@@ -33,6 +33,9 @@ public class PostController extends HttpServlet {
 		
 		String contents = request.getParameter("smarteditor");
 		String boardNum = request.getParameter("boardNum");
+		String title = request.getParameter("title");
+		
+		System.out.println("title" + title);
 		
 		if( request.getSession().getAttribute("userVo") == null){
 			response.sendRedirect(request.getContextPath() + "/login");

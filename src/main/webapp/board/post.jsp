@@ -82,6 +82,7 @@
 									$("#insert").submit();
 								}
 							}
+							
 						})
 			});
 
@@ -120,15 +121,14 @@
 				<div class="form-group">
 					<div class="col-sm-9">
 						<label for="title" class="col-sm-1 control-label">제목</label>
+					<form action="${pageContext.request.contextPath }/post"
+						method="post" id="insert" enctype="multipart/form-data">
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="title" name="title"
 								placeholder="제목">
 						</div>
 						<div class="col-sm-9 ">
-							<!-- <label for="smarteditor" class="col-sm-2 ">내용</label> -->
 							<div class="col-sm-9 ">
-								<form action="${pageContext.request.contextPath }/post"
-									method="post" id="insert" enctype="multipart/form-data">
 									<textarea name="smarteditor" id="smarteditor" rows="12"
 										cols="100" style="width: 766px; height: 412px;"></textarea>
 										<table>

@@ -72,7 +72,7 @@ public class PostDaoImplTest {
 	
 	@Test
 	public void testGetDetailPost(){
-		PostVo postVo = postDao.getDetailPost(sqlSession, "3");
+		List<Object> postVo = postDao.getDetailPost(sqlSession, "3");
 		assertNotNull(postVo);
 	}
 
