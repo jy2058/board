@@ -96,7 +96,9 @@
 			});
 			
 			$("#newBtn").on("click", function(){
-				$("#newPost").val("insert");
+				
+				$("#boardNum").val("${param.boardNum}");
+				
 				$("#post_frm").submit();
 			});
 		});
@@ -105,7 +107,8 @@
 		<input type="hidden" name="postNum" id="postNum"/>
 	</form>
 	<form action="${pageContext.servletContext.contextPath}/post" id="post_frm" method="get">
-		<input type="hidden" name="newPost" id="newPost"/>
+		<input type="hidden" name="boardNum" id="boardNum"/>
+		<!-- <input type="hidden" name="newPost" id="newPost"/> -->
 	</form>
 </body>
 </html>

@@ -38,7 +38,6 @@ public class LoginServlet extends HttpServlet {
 		if(user.getUserId().equals(userId) && user.getPass().equals(pass)){
 			HttpSession session = request.getSession();
 			session.setAttribute("userVo", user);
-			
 			request.getRequestDispatcher("/module/main.jsp").forward(request, response);
 		}else{
 			doGet(request, response);
