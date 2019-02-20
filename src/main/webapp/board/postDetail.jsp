@@ -94,16 +94,17 @@
 				</div>
 				</div>
 				
+			</form>
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-9">
-						<button id="regBtn" type="button" class="btn btn-default">수정</button>
-					
-						<button id="regBtn" type="button" class="btn btn-default">삭제</button>
-						<button id="regBtn" type="button" class="btn btn-default">답글</button>
+						<form id="upd" action="${pageContext.request.contextPath }/updPost" method="post">
+							<button type="button" id="updBtn" class="btn btn-default">수정</button>
+							<button id="delBtn" type="button" class="btn btn-default">삭제</button>
+						</form>
+						<button id="reBtn" type="button" class="btn btn-default">답글</button>
 					</div>
 				</div>
 				
-			</form>
         </div>
       </div>
     </div>
@@ -125,7 +126,9 @@
   			initData();
   			
   			$("#regBtn").on("click",function(){
-  				
+  				// 이렇게 하지 말고 있던 form을 이용
+  				//attr(action)-> 이런식으로 액션 속성값(경로)을 바꾼다.
+  				$("#upd").submit();
   			});
   			
   		});

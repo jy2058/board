@@ -111,8 +111,7 @@
        
        
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">게시글 상세조회</h1>
-          updPost
+          <h1 class="page-header">게시글 수정</h1>
           	<form id="frm" action="${pageContext.request.contextPath }/userForm" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="postTitle" class="col-sm-3 control-label">제목</label>
@@ -125,7 +124,6 @@
 				<div class="form-group">
 					<label for="postContents" class="col-sm-3 control-label">글 내용</label>
 					<div class="col-sm-9" >
-						<div class="form-control">${postList[0].contents}</div>
 						<textarea name="smarteditor" id="smarteditor" rows="12"
 										cols="100" style="width: 766px; height: 412px;"></textarea>
 					</div>
@@ -145,34 +143,8 @@
 				</div>
 				
 				<div class="form-group">
-					<label for="file" class="col-sm-3 control-label">댓글</label>
-					<div class="col-sm-9">
-					<table class="table table-striped">
-						<tr>
-							<td class="col-sm-4">내용</td>
-							<td class="col-sm-3">작성자</td>
-							<td class="col-sm-3">작성일시</td>
-						</tr>
-						<c:forEach items="${comList}" var="comList">
-	              			<tr class="postTr">
-		              			<td class="col-sm-4">${comList.com_contents }</td>
-		              			<td class="col-sm-3">${comList.userId }</td>
-		              			<td class="col-sm-3"><fmt:formatDate value="${comList.com_date }" pattern="yyyy-MM-dd"/></td>
-              				</tr>
-			            </c:forEach>  	
-					</table>
-					<input type="text" class="form-control" id="title" name="title"
-							placeholder="댓글">
-					<button id="regBtn" type="button" class="btn btn-default">댓글저장</button>
-				</div>
-				</div>
-				
-				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-9">
-						<button id="regBtn" type="button" class="btn btn-default">수정</button>
-					
-						<button id="regBtn" type="button" class="btn btn-default">삭제</button>
-						<button id="regBtn" type="button" class="btn btn-default">답글</button>
+						<button id="regBtn" type="button" class="btn btn-default">저장</button>
 					</div>
 				</div>
 				
