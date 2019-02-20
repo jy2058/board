@@ -6,9 +6,14 @@
 <mapper namespace="post">
   
   <insert id="insertPost" parameterType="postVo">
+  	
   	insert into posts
 	(postnum, userid, contents, title, postdate, parentpostnum, toppostnum, boardnum, boardinfo)
-	values (POSTNUM_SEQ.nextval, #{user_id}, #{contents}, #{title}, sysdate, #{parent_postNum}, #{rootNum}, #{boardNum}, #{board_info})
+	values (POSTNUM_SEQ.nextval, #{user_id}, #{contents}, #{title}, sysdate, #{parent_postNum}, POSTNUM_SEQ.nextval, #{boardNum}, #{board_info})
+  	<selectKey keyProperty="postNum" resultType="String" order="AFTER">
+		select POSTNUM_SEQ.currval from dual
+	</selectKey>
+	
   </insert>
   
   <select id="getAllPost" parameterType="String" resultType="postVo">

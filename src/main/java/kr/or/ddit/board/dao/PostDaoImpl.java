@@ -12,7 +12,7 @@ public class PostDaoImpl implements IPostDao{
 	
 	@Override
 	public int insertPost(SqlSession sqlSession, PostVo postVo) {
-		int insertCnt = sqlSession.insert("post.insertPost", postVo);
+		int insertCnt = (int)sqlSession.insert("post.insertPost", postVo);
 		return insertCnt;
 	}
 
