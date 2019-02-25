@@ -40,4 +40,10 @@ public class PostDaoImpl implements IPostDao{
 		return attList;
 	}
 
+	@Override
+	public int updPost(SqlSession sqlSession, PostVo postVo) {
+		int updCnt = sqlSession.update("post.updPost", postVo);
+		return updCnt;
+	}
+
 }

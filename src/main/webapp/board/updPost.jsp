@@ -75,7 +75,8 @@
 
 								// 이부분에 에디터 validation 검증
 								if (validation()) {
-									$("#insert").submit();
+									console.log("validation");
+									$("#updFrm").submit();
 								}
 							}
 							
@@ -112,20 +113,20 @@
        
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">게시글 수정</h1>
-          	<form id="frm" action="${pageContext.request.contextPath }/userForm" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+          	<form id="updFrm" action="${pageContext.request.contextPath }/updPost" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="postTitle" class="col-sm-3 control-label">제목</label>
 					<div class="col-sm-9">
-					<input type="text" class="form-control" id="title" name="title"
+					<input type="text" class="form-control" id="title" name="title" value="${postList[0].title }"
 							placeholder="제목">
 					</div>
 				</div>
 				
-				<div class="form-group">
+				<div class="form-group"> 
 					<label for="postContents" class="col-sm-3 control-label">글 내용</label>
 					<div class="col-sm-9" >
 						<textarea name="smarteditor" id="smarteditor" rows="12"
-										cols="100" style="width: 766px; height: 412px;"></textarea>
+										cols="100" style="width: 766px; height: 412px;">${postList[0].contents }</textarea>
 					</div>
 				</div>
 
@@ -144,9 +145,10 @@
 				
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-9">
-						<button id="regBtn" type="button" class="btn btn-default">저장</button>
+						<button id="saveBtn" type="button" class="btn btn-default">저장</button>
 					</div>
 				</div>
+				<input type="hidden" value="${param.postNum }" name="postNum">
 				
 			</form>
         </div>

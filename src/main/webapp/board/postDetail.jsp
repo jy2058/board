@@ -42,7 +42,7 @@
        
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">게시글 상세조회</h1>
-          	<form id="frm" action="${pageContext.request.contextPath }/userForm" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+          	<form id="frm" action="${pageContext.request.contextPath }/updPost" method="get" class="form-horizontal" role="form" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="postTitle" class="col-sm-3 control-label">제목</label>
 					<div class="col-sm-9">
@@ -90,20 +90,20 @@
 					</table>
 					<input type="text" class="form-control" id="title" name="title"
 							placeholder="댓글">
-					<button id="regBtn" type="button" class="btn btn-default">댓글저장</button>
+					<button id="comBtn" type="button" class="btn btn-default">댓글저장</button>
 				</div>
 				</div>
 				
-			</form>
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-9">
-						<form id="upd" action="${pageContext.request.contextPath }/updPost" method="post">
-							<button type="button" id="updBtn" class="btn btn-default">수정</button>
-							<button id="delBtn" type="button" class="btn btn-default">삭제</button>
-						</form>
+						<button type="button" id="updBtn" class="btn btn-default">수정</button>
+						<button id="delBtn" type="button" class="btn btn-default">삭제</button>
 						<button id="reBtn" type="button" class="btn btn-default">답글</button>
 					</div>
 				</div>
+				
+				<input type="hidden" name="postNum" id="postNum" value="${param.postNum }">
+			</form>
 				
         </div>
       </div>
@@ -125,11 +125,20 @@
   		$(document).ready(function(){
   			initData();
   			
-  			$("#regBtn").on("click",function(){
-  				// 이렇게 하지 말고 있던 form을 이용
-  				//attr(action)-> 이런식으로 액션 속성값(경로)을 바꾼다.
-  				$("#upd").submit();
+  			$("#comBtn").on("click",function(){
+				$("#frm").submit();
   			});
+  			
+  			$("#updBtn").on("click",function(){
+  				$("#frm").attr("action","${pageContext.request.contextPath }/updPost");
+				$("#frm").submit();
+  			});
+  			
+  			$("#delBtn").on("click",function(){
+  				$("#frm").attr("action","${pageContext.request.contextPath }/updPost");
+				$("#frm").submit();
+  			});
+  			
   			
   		});
   	</script>

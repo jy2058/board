@@ -23,7 +23,7 @@
 	where board.boardnum = posts.boardnum and posts.boardnum = #{boardNum}
 	start with parentpostnum is null
 	    connect by prior postnum = parentpostnum
-	    order siblings by toppostnum desc, postnum
+	    order siblings by to_number(toppostnum) desc, postnum
 
   </select>
   
@@ -35,7 +35,7 @@
 	</select> -->
 	
 	<select id="getDetailPost" parameterType="String" resultType="postVo">
-		select title, contents, postnum
+		select /*+ INDEX(posts pk_post)*/ title, contents, postnum
 		from posts
 		where postnum = #{postNum}
 	</select>
@@ -52,4 +52,9 @@
 		where postnum = #{postNum}
 	</select>
 	
+	<update id="updPost" parameterType="postVo">
+		update posts set title = #{title}, contents = #{contents}
+		where postnum = #{postNum}
+	
+	</update>
 </mapper>

@@ -53,5 +53,17 @@ public class PostServiceImplTest {
 		postVo = (PostVo) postService.getDetailPost("3");
 		assertNotNull(postVo);
 	}
+	
+	@Test
+	public void testUpdPost(){
+		postVo = new PostVo();
+		postVo.setPostNum("40");
+		postVo.setTitle("aaaaaaa");
+		postVo.setContents("");
+		
+		int updCnt = postService.updPost(postVo);
+		
+		assertNotNull(updCnt);
+	}
 
 }

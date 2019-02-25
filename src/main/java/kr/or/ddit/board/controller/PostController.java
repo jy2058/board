@@ -1,6 +1,7 @@
 package kr.or.ddit.board.controller;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -71,7 +72,8 @@ public class PostController extends HttpServlet {
 	
 		
 		
-
+		//Collection<Part> parts = request.getParts();
+		
 		/*		
 		Part uploadFilePart = request.getPart("uploadFile");
 		String ContentDisposition = uploadFilePart.getHeader("Content-Disposition");

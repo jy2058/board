@@ -75,5 +75,22 @@ public class PostDaoImplTest {
 		List<Object> postVo = postDao.getDetailPost(sqlSession, "3");
 		assertNotNull(postVo);
 	}
+	
+	/**
+	* Method : testUpdPost
+	* 작성자 : PC08
+	* 변경이력 :
+	* Method 설명 : 게시글 수정
+	*/
+	@Test
+	public void testUpdPost(){
+		PostVo postVo = new PostVo();
+		postVo.setPostNum("40");
+		postVo.setTitle("aaaaaaa");
+		
+		int updCnt = postDao.updPost(sqlSession, postVo);
+		
+		assertNotNull(updCnt);
+	}
 
 }

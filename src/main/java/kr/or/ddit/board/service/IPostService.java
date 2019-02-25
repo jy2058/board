@@ -50,4 +50,14 @@ public interface IPostService {
 	* Method 설명 : 상세 게시글
 	*/
 	Map<String, List<Object>> getDetailPostAll(String postNum);
+	
+	/**
+	* Method : updPost
+	* 작성자 : PC08
+	* 변경이력 :
+	* @param postVo
+	* @return
+	* Method 설명 : 게시글 수정
+	*/
+	int updPost(PostVo postVo);
 }

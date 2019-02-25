@@ -64,4 +64,15 @@ public interface IPostDao {
 	* Method 설명 : 모든 첨부파일 가져오기
 	*/
 	List<Object> getAllAtt(SqlSession sqlSession, String postNum);
+	
+	/**
+	* Method : updPost
+	* 작성자 : PC08
+	* 변경이력 :
+	* @param sqlSession
+	* @param postVo
+	* @return
+	* Method 설명 : 게시글 수정
+	*/
+	int updPost(SqlSession sqlSession, PostVo postVo);
 }

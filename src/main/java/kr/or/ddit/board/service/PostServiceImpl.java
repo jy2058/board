@@ -70,5 +70,17 @@ public class PostServiceImpl implements IPostService{
 		
 		return detail_all;
 	}
+	@Override
+	public int updPost(PostVo postVo) {
+		SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		int updCnt = postDao.updPost(sqlSession, postVo);
+		
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return updCnt;
+	}
 
 }
