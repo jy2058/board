@@ -55,7 +55,7 @@ public class PostController extends HttpServlet {
 		String userId = userVo.getUserId();
 		
 		PostVo postVo = new PostVo();
-		postVo.setBoard_info("1");
+		postVo.setPost_info("1");
 		postVo.setBoardNum(boardNum);
 		postVo.setContents(contents);
 		postVo.setTitle(title);

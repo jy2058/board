@@ -103,6 +103,7 @@
 				</div>
 				
 				<input type="hidden" name="postNum" id="postNum" value="${param.postNum }">
+				<input type="hidden" name="info" id="info">
 			</form>
 				
         </div>
@@ -135,7 +136,9 @@
   			});
   			
   			$("#delBtn").on("click",function(){
+  				$("#info").val("delete");
   				$("#frm").attr("action","${pageContext.request.contextPath }/updPost");
+  				$("#frm").attr("method","post");
 				$("#frm").submit();
   			});
   			

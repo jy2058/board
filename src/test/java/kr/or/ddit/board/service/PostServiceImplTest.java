@@ -29,7 +29,7 @@ public class PostServiceImplTest {
 		postVo.setPostNum(postVo.getPostNum());
 		postVo.setParent_postNum("");
 		postVo.setRootNum("5");
-		postVo.setBoard_info("1");
+		postVo.setPost_info("1");
 		postVo.setContents("테스dfdf텟트");
 		
 		/***When***/

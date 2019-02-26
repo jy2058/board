@@ -82,5 +82,17 @@ public class PostServiceImpl implements IPostService{
 		
 		return updCnt;
 	}
+	@Override
+	public int delPost(String postNum) {
+		SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		int delCnt = postDao.delPost(sqlSession, postNum);
+		
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return delCnt;
+	}
 
 }

@@ -75,4 +75,15 @@ public interface IPostDao {
 	* Method 설명 : 게시글 수정
 	*/
 	int updPost(SqlSession sqlSession, PostVo postVo);
+	
+	/**
+	* Method : delPost
+	* 작성자 : PC08
+	* 변경이력 :
+	* @param sqlSession
+	* @param postNum
+	* @return
+	* Method 설명 : 게시글 삭제
+	*/
+	int delPost(SqlSession sqlSession, String postNum);
 }

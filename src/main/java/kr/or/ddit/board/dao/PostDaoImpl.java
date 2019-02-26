@@ -46,4 +46,10 @@ public class PostDaoImpl implements IPostDao{
 		return updCnt;
 	}
 
+	@Override
+	public int delPost(SqlSession sqlSession, String postNum) {
+		int delCnt = sqlSession.update("post.delPost", postNum);
+		return delCnt;
+	}
+
 }

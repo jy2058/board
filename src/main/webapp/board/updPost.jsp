@@ -149,7 +149,7 @@
 					</div>
 				</div>
 				<input type="hidden" value="${param.postNum }" name="postNum">
-				
+				<input type="hidden" value="update" name="info"> 
 			</form>
         </div>
       </div>

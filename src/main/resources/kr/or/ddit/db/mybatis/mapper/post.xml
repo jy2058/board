@@ -8,8 +8,8 @@
   <insert id="insertPost" parameterType="postVo">
   	
   	insert into posts
-	(postnum, userid, contents, title, postdate, parentpostnum, toppostnum, boardnum, boardinfo)
-	values (POSTNUM_SEQ.nextval, #{user_id}, #{contents}, #{title}, sysdate, #{parent_postNum}, POSTNUM_SEQ.nextval, #{boardNum}, #{board_info})
+	(postnum, userid, contents, title, postdate, parentpostnum, toppostnum, boardnum, postinfo)
+	values (POSTNUM_SEQ.nextval, #{user_id}, #{contents}, #{title}, sysdate, #{parent_postNum}, POSTNUM_SEQ.nextval, #{boardNum}, #{post_info})
   	<selectKey keyProperty="postNum" resultType="String" order="AFTER">
 		select POSTNUM_SEQ.currval from dual
 	</selectKey>
@@ -18,7 +18,7 @@
   
   <select id="getAllPost" parameterType="String" resultType="postVo">
    
-  	select postnum, LPAD('　└', 2*level-1) || title as title, postdate, posts.boardnum, userid as user_Id, contents, postdate as post_date, parentpostnum as parent_postNum, toppostnum as rootNum, boardinfo as board_info
+  	select postnum, LPAD('　└', 2*level-1) || title as title, postdate, posts.boardnum, userid as user_Id, contents, postdate as post_date, parentpostnum as parent_postNum, toppostnum as rootNum, postinfo as post_info
 	from posts, board
 	where board.boardnum = posts.boardnum and posts.boardnum = #{boardNum}
 	start with parentpostnum is null
@@ -35,7 +35,7 @@
 	</select> -->
 	
 	<select id="getDetailPost" parameterType="String" resultType="postVo">
-		select /*+ INDEX(posts pk_post)*/ title, contents, postnum
+		select /*+ INDEX(posts pk_post)*/ title, contents, postnum, boardnum
 		from posts
 		where postnum = #{postNum}
 	</select>
@@ -55,6 +55,10 @@
 	<update id="updPost" parameterType="postVo">
 		update posts set title = #{title}, contents = #{contents}
 		where postnum = #{postNum}
+	</update>
 	
+	<update id="delPost" parameterType="String">
+		update posts set postinfo = '0', title = '삭제된 글 입니다'
+		where postnum = #{postNum}
 	</update>
 </mapper>
