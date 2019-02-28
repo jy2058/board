@@ -29,6 +29,7 @@ public class BoardController extends HttpServlet {
 		postList = postService.getAllPost(boardNum);
 		
 		request.setAttribute("postList", postList);
+//		request.setAttribute("boardNum", boardNum);
 		request.getRequestDispatcher("/board/board.jsp").forward(request, response);
 	}
 

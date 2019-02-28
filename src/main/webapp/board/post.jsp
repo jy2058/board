@@ -143,19 +143,19 @@
 											</tr>
 										</div>
 <!-- 									<div id="add_div"> -->
-									
-									
 									</div>
 									</table>
 									<input type="button" id="addBtn" value="추가">
 									<input type="hidden" value="${param.boardNum }" name="boardNum">
+									<input type="hidden" value="${rootNum }" name="rootNum">
+									<input type="hidden" value="${parent }" name="parent">
+									<input type="hidden" value="${postNum }" name="postNum">
 								</form>
 								<input type="button" id="saveBtn" value="저장" />
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 

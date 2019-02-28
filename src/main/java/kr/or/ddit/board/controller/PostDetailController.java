@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import kr.or.ddit.board.service.PostServiceImpl;
 import kr.or.ddit.user.service.UserServiceImpl;
 
 @WebServlet("/postDetail")
+@MultipartConfig(maxFileSize=5*1024*1024, maxRequestSize=5*5*1024*1024)
 public class PostDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IPostService postService;
@@ -29,6 +31,9 @@ public class PostDetailController extends HttpServlet {
 		
 		String postNum = request.getParameter("postNum");
 		System.out.println("postNum = " + postNum);
+		
+		String boardNum = request.getParameter("boardNum");
+		request.setAttribute("boardNum", boardNum);
 		
 		Map<String, List<Object>> detail_map = postService.getDetailPostAll(postNum);
 		

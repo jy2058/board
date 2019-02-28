@@ -33,9 +33,17 @@ public class PostController extends HttpServlet {
 	}
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*		if(request.getSession().getAttribute("userVo") == null){
-			response.sendRedirect(request.getContextPath() + "/login");
-		}*/
+		
+		String rootNum = request.getParameter("root");
+		String parent = request.getParameter("parent");
+		String boardNum = request.getParameter("boardNum");
+		String postNum = request.getParameter("postNum");
+		
+		request.setAttribute("rootNum", rootNum);
+		request.setAttribute("parent", parent);
+		request.setAttribute("boardNum", boardNum);
+		request.setAttribute("postNum", postNum);
+
 		request.getRequestDispatcher("/board/post.jsp").forward(request, response);
 	}
 
@@ -45,10 +53,24 @@ public class PostController extends HttpServlet {
 		String boardNum = request.getParameter("boardNum");
 		String title = request.getParameter("title");
 		
-		System.out.println("title" + title);
+		String parent = request.getParameter("parent");
+		String rootNum = request.getParameter("rootNum");
+		String postNum = request.getParameter("postNum");
+		
+		System.out.println("rootNum +++" + rootNum);
 		
 		if( request.getSession().getAttribute("userVo") == null){
 			response.sendRedirect(request.getContextPath() + "/login");
+		}
+		
+		String tempParent = null;
+		String tempRoot = null;
+		if(!postNum.equals(rootNum)){
+			tempParent = null;
+			tempRoot = postNum;
+		}else{
+			tempParent = postNum;
+			tempRoot = rootNum;
 		}
 		
 		UserVo userVo = (UserVo) request.getSession().getAttribute("userVo");
@@ -60,7 +82,10 @@ public class PostController extends HttpServlet {
 		postVo.setContents(contents);
 		postVo.setTitle(title);
 		postVo.setUser_id(userId);
-		postVo.setParent_postNum("");
+		postVo.setParent_postNum(tempParent);
+		postVo.setRootNum(tempRoot);
+		
+		////rootNum 수정했음 -> tempRoot로
 		
 		int insertCnt = postService.insertPost(postVo);
 		

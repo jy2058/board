@@ -91,13 +91,14 @@
 			$(".postTr").on("click", function(){
 				var postNum = $(this).attr("data-postNum");
 				$("#postNum").val(postNum);
+				$("#boardNum").val("${param.boardNum}");
 				
 				$("#detail_frm").submit();
 			});
 			
 			$("#newBtn").on("click", function(){
 				
-				$("#boardNum").val("${param.boardNum}");
+				$("#boardNum2").val("${param.boardNum}");
 				
 				$("#post_frm").submit();
 			});
@@ -105,9 +106,10 @@
 	</script>
 	<form action="${pageContext.servletContext.contextPath}/postDetail" id="detail_frm" method="get">
 		<input type="hidden" name="postNum" id="postNum"/>
+		<input type="hidden" name="boardNum" id="boardNum"/>
 	</form>
 	<form action="${pageContext.servletContext.contextPath}/post" id="post_frm" method="get">
-		<input type="hidden" name="boardNum" id="boardNum"/>
+		<input type="hidden" name="boardNum" id="boardNum2"/>
 		<!-- <input type="hidden" name="newPost" id="newPost"/> -->
 	</form>
 </body>

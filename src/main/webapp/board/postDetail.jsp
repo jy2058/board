@@ -104,6 +104,9 @@
 				
 				<input type="hidden" name="postNum" id="postNum" value="${param.postNum }">
 				<input type="hidden" name="info" id="info">
+				<input type="hidden" name="root" value="${postList[0].rootNum }">
+				<input type="hidden" name="parent" value="${postList[0].parent_postNum }">
+				<input type="hidden" name="boardNum" value="${boardNum }">
 			</form>
 				
         </div>
@@ -140,6 +143,11 @@
   				$("#frm").attr("action","${pageContext.request.contextPath }/updPost");
   				$("#frm").attr("method","post");
 				$("#frm").submit();
+  			});
+  			
+  			$("#reBtn").on("click", function(){
+  				$("#frm").attr("action","${pageContext.request.contextPath }/post");
+  				$("#frm").submit();
   			});
   			
   			

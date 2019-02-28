@@ -9,7 +9,7 @@
   	
   	insert into posts
 	(postnum, userid, contents, title, postdate, parentpostnum, toppostnum, boardnum, postinfo)
-	values (POSTNUM_SEQ.nextval, #{user_id}, #{contents}, #{title}, sysdate, #{parent_postNum}, POSTNUM_SEQ.nextval, #{boardNum}, #{post_info})
+	values (POSTNUM_SEQ.nextval, #{user_id}, #{contents}, #{title}, sysdate, #{parent_postNum}, #{rootNum}, #{boardNum}, #{post_info})
   	<selectKey keyProperty="postNum" resultType="String" order="AFTER">
 		select POSTNUM_SEQ.currval from dual
 	</selectKey>
@@ -35,7 +35,7 @@
 	</select> -->
 	
 	<select id="getDetailPost" parameterType="String" resultType="postVo">
-		select /*+ INDEX(posts pk_post)*/ title, contents, postnum, boardnum
+		select /*+ INDEX(posts pk_post)*/ title, contents, postnum, boardnum, toppostnum as rootNum, parentpostnum as parent_postNum
 		from posts
 		where postnum = #{postNum}
 	</select>
